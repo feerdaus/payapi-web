@@ -10,7 +10,6 @@ export default function Home() {
           name="description"
           content="Start building with our APIs for absolutely free."
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
