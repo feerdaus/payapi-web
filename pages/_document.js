@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/ PWA primary color /}
+          {/* {/ PWA primary color /} */}
           <meta
             key="theme-color"
             name="theme-color"
@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
           />
           <link key="favicon" rel="icon" href="/favicon.ico" />
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans:wght@400;700&display=swap"
             rel="stylesheet"
           />
         </Head>
@@ -28,4 +28,4 @@ export default class MyDocument extends Document {
   }
 }
 
-// https://fonts.google.com/share?selection.family=DM%20Serif%20Display%7CPublic%20Sans
+//https://fonts.google.com/share?selection.family=DM%20Serif%20Display%7CPublic%20Sans:wght@400;700

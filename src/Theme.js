@@ -1,8 +1,19 @@
 import { createTheme } from "@mui/material/styles";
-import { letterSpacing } from "@mui/system";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 840,
+      lg: 1110,
+      xl: 1440,
+    },
+  },
   palette: {
+    background: {
+      default: "#F2F2F2",
+    },
     common: {
       secondary_pink: "#da6d97",
     },
@@ -17,7 +28,6 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "DM Serif Display",
     h1: {
       fontSize: "72px",
       lineHeight: "72px",
@@ -52,6 +62,15 @@ const theme = createTheme({
     body1: {
       fontSize: "15px",
       lineHeight: "28px",
+    },
+    button: {
+      textTransform: "none",
+      fontFamily:
+        '-apple-system, BlinkMacSystemFont, Segoe UI, "Public Sans", Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
+      fontWeight: 700,
+      fontSize: 15,
+      lineHeight: "18px",
+      letterSpacing: -0.115385,
     },
   },
 });

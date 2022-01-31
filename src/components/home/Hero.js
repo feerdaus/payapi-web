@@ -1,5 +1,5 @@
 const Hero = () => {
-  return <div>hello</div>;
+  return <div></div>;
 };
 
 export default Hero;
