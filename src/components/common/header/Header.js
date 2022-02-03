@@ -10,6 +10,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
 
+const tabItems = [
+  { text: "Pricing", link: "/pricing" },
+  { text: "About", link: "/about" },
+  { text: "Contact", link: "/contact" },
+];
+
 const Header = (props) => {
   const [value, setValue] = useState(0);
 
@@ -24,9 +30,16 @@ const Header = (props) => {
       TabIndicatorProps={{ style: { display: "none" } }}
       aria-label="navigation tabs"
     >
-      <Tab label="Item One" />
-      <Tab label="Item Two" />
-      <Tab label="Item Three" />
+      {tabItems.map((item, index) => (
+        <Tab
+          label={item.text}
+          sx={{
+            "&.Mui-selected": {
+              color: "secondary.dark",
+            },
+          }}
+        />
+      ))}
     </Tabs>
   );
 
