@@ -1,16 +1,17 @@
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { logoIcon } from "../icons";
 import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
+import MyTabs from "./MyTabs";
+import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
+import MyDrawer from "./MyDrawer";
+import Hidden from "@mui/material/Hidden";
 
-const tabItems = [
+export const tabItems = [
   { text: "Pricing", link: "/pricing" },
   { text: "About", link: "/about" },
   { text: "Contact", link: "/contact" },
@@ -18,30 +19,22 @@ const tabItems = [
 
 const Header = (props) => {
   const [value, setValue] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setIsOpen(open);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const myTabs = (
-    <Tabs
-      value={value}
-      onChange={handleChange}
-      TabIndicatorProps={{ style: { display: "none" } }}
-      aria-label="navigation tabs"
-    >
-      {tabItems.map((item, index) => (
-        <Tab
-          label={item.text}
-          sx={{
-            "&.Mui-selected": {
-              color: "secondary.dark",
-            },
-          }}
-        />
-      ))}
-    </Tabs>
-  );
 
   return (
     <AppBar
@@ -67,11 +60,25 @@ const Header = (props) => {
             }}
           >
             {logoIcon}
-            {myTabs}
+            <Hidden smDown>
+              <MyTabs value={value} onChange={handleChange} />
+            </Hidden>
+            <Hidden mdUp>
+              <IconButton
+                color="secondary"
+                aria-label="Toggle menu icon"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon fontSize="large" />
+              </IconButton>
+              <MyDrawer isOpen={isOpen} toggleDrawer={toggleDrawer} />
+            </Hidden>
           </Box>
-          <Button className="btn" variant="contained" color="primary">
-            Schedule a Demo
-          </Button>
+          <Hidden smDown>
+            <Button className="btn" variant="contained" color="primary">
+              Schedule a Demo
+            </Button>
+          </Hidden>
         </Toolbar>
       </Container>
     </AppBar>
